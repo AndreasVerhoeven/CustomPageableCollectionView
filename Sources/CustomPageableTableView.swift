@@ -85,6 +85,12 @@ public class CustomPageableTableView: UITableView {
 		pager.setContentOffset(pagingConfiguration.pagerContentOffset(for: contentOffset, in: self, pager: pager), animated: animated)
 	}
 
+	public override var contentOffset: CGPoint {
+		didSet {
+			pager.contentOffset = pagingConfiguration.pagerContentOffset(for: contentOffset, in: self, pager: pager)
+		}
+	}
+
 	// MARK: - UIView
 	public override var bounds: CGRect {
 		didSet { pager.updateForBoundsChange() }
