@@ -24,7 +24,6 @@ internal class PagerScrollView: UIScrollView {
 		fatalError("not implemented")
 	}
 
-
 	// The paging configuration
 	var configuration = PagingConfiguration(size: .full) {
 		didSet {

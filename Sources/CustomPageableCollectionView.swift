@@ -15,7 +15,7 @@ public class CustomPageableCollectionView: UICollectionView {
 		set { pager.configuration = newValue }
 	}
 	
-	func pageToItem(with indexPath: IndexPath, animated: Bool) {
+	public func scrollToPageForItem(with indexPath: IndexPath, animated: Bool) {
 		guard let layoutAttributes = self.layoutAttributesForItem(at: indexPath) else { return }
 		let offset = pagingConfiguration.pagedPagerContentOffset(for: layoutAttributes.frame, in: self, pager: pager)
 		pager.setContentOffset(offset, animated: animated)
