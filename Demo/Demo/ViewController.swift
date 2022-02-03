@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
 		// this is where the magic happens
 		collectionView.pagingConfiguration.size = .absolute(height: 200)
-		collectionView.pagingConfiguration.alignment = .top
+		collectionView.pagingConfiguration.alignment = .centerY
 
 		collectionView.dataSource = self
 		collectionView.delegate = self
@@ -51,8 +51,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		//self.collectionView.pageToItem(with: indexPath, animated: true)
-		print(collectionView.contentOffset)
-		collectionView.setContentOffset(CGPoint(x: 0, y: -91), animated: true)
+		self.collectionView.scrollToPageForItem(with: indexPath, animated: true)
 	}
 }

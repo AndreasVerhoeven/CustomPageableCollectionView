@@ -40,6 +40,15 @@ public class CustomPageableScrollView: UIScrollView {
 	}
 
 	// MARK: - UIScrollView
+	private var _isPagingEnabled = true
+	public override var isPagingEnabled: Bool {
+		get { _isPagingEnabled }
+		set {
+			_isPagingEnabled = newValue
+			pager.updateProperties()
+		}
+	}
+	
 	public override var isTracking: Bool {
 		return pager.isTracking || super.isTracking
 	}

@@ -41,7 +41,7 @@ internal class PagerScrollView: UIScrollView {
 	}
 
 	public func updateForBoundsChange() {
-		guard let parent = parent, parent.isPagingEnabled else { return }
+		guard let parent = parent else { return }
 		guard ignoreBoundsChange == false else { return }
 		ignorePagerBoundsChange = true
 		contentOffset = configuration.pagerContentOffset(for: contentOffset, in: parent, pager: self)
