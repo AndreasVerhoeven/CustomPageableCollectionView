@@ -14,6 +14,14 @@ public class CustomPageableScrollView: UIScrollView {
 		get { pager.configuration }
 		set { pager.configuration = newValue }
 	}
+	
+	public var currentVerticalPage: Int {
+		return Int(pager.contentOffset.y / max(1, pager.bounds.height))
+	}
+	
+	public var currentHorizontalPage: Int {
+		return Int(pager.contentOffset.x / max(1, pager.bounds.width))
+	}
 
 	// MARK: - Private
 	private func setup() {
