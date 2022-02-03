@@ -24,7 +24,7 @@ class ViewController: UIViewController {
 
 		// this is where the magic happens
 		collectionView.pagingConfiguration.size = .absolute(height: 200)
-		collectionView.pagingConfiguration.alignment = .centerY
+		collectionView.pagingConfiguration.alignment = .top
 
 		collectionView.dataSource = self
 		collectionView.delegate = self
@@ -41,12 +41,18 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 50
+		return 10
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 		cell.contentView.backgroundColor = UIColor(red: CGFloat.random(in: 0..<1), green: CGFloat.random(in: 0..<1), blue: CGFloat.random(in: 0..<1), alpha: 1)
 		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		//self.collectionView.pageToItem(with: indexPath, animated: true)
+		print(collectionView.contentOffset)
+		collectionView.setContentOffset(CGPoint(x: 0, y: -91), animated: true)
 	}
 }

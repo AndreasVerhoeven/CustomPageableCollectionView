@@ -14,6 +14,12 @@ public class CustomPageableCollectionView: UICollectionView {
 		get { pager.configuration }
 		set { pager.configuration = newValue }
 	}
+	
+	func pageToItem(with indexPath: IndexPath, animated: Bool) {
+		guard let layoutAttributes = self.layoutAttributesForItem(at: indexPath) else { return }
+		let offset = pagingConfiguration.pagedPagerContentOffset(for: layoutAttributes.frame, in: self, pager: pager)
+		pager.setContentOffset(offset, animated: animated)
+	}
 
 	// MARK: - Private
 	private func setup() {
@@ -88,6 +94,7 @@ public class CustomPageableCollectionView: UICollectionView {
 
 	public override var contentOffset: CGPoint {
 		didSet {
+			guard contentOffset != oldValue else { return }
 			pager.contentOffset = pagingConfiguration.pagerContentOffset(for: contentOffset, in: self, pager: pager)
 		}
 	}

@@ -14,6 +14,11 @@ public class CustomPageableTableView: UITableView {
 		get { pager.configuration }
 		set { pager.configuration = newValue }
 	}
+	
+	func pageToItem(with indexPath: IndexPath, animated: Bool) {
+		let offset = pagingConfiguration.pagedPagerContentOffset(for: self.rectForRow(at: indexPath), in: self, pager: pager)
+		pager.setContentOffset(offset, animated: animated)
+	}
 
 	// MARK: - Private
 	private func setup() {
