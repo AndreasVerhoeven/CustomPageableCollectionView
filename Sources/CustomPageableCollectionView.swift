@@ -31,7 +31,6 @@ public class CustomPageableCollectionView: UICollectionView {
 
 	// MARK: - Private
 	private func setup() {
-		isPagingEnabled = true
 		pager.updateProperties()
 	}
 
