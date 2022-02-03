@@ -104,7 +104,7 @@ internal class PagerScrollView: UIScrollView {
 	// MARK: - UIView
 	override var bounds: CGRect {
 		didSet {
-			guard ignorePagerBoundsChange == false else { return }
+			guard ignorePagerBoundsChange == false, ignoreBoundsChange == false else { return }
 			updateParentContentOffset()
 		}
 	}
