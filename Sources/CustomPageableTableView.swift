@@ -20,7 +20,7 @@ public class CustomPageableTableView: UITableView {
 		pager.setContentOffset(offset, animated: animated)
 	}
 	
-	public var currentPage: Int {
+	public var currentPageIndex: Int {
 		return Int(pager.contentOffset.y / max(1, pager.bounds.height))
 	}
 

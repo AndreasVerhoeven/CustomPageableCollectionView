@@ -21,11 +21,11 @@ public class CustomPageableCollectionView: UICollectionView {
 		pager.setContentOffset(offset, animated: animated)
 	}
 	
-	public var currentVerticalPage: Int {
+	public var currentVerticalPageIndex: Int {
 		return Int(pager.contentOffset.y / max(1, pager.bounds.height))
 	}
 	
-	public var currentHorizontalPage: Int {
+	public var currentHorizontalPageIndex: Int {
 		return Int(pager.contentOffset.x / max(1, pager.bounds.width))
 	}
 
