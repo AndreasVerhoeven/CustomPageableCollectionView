@@ -34,11 +34,11 @@ extension PagingConfiguration {
 		let pageSize = resolvedPageSize(for: viewSize, contentInsets: contentInsets)
 		
 		if size.height.isUnused == false {
-			output.y = (frame.minY / ceil(max(1, pageSize.height))) * pageSize.height
+			output.y = (frame.minY / max(1, pageSize.height)).rounded(.down) * pageSize.height
 		}
 		
 		if size.width.isUnused == false {
-			output.x = (frame.minX / ceil(max(1, pageSize.width))) * pageSize.width
+			output.x = (frame.minX / max(1, pageSize.width)).rounded(.down) * pageSize.width
 		}
 		
 		return output
