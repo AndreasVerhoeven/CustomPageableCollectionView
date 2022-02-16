@@ -129,7 +129,10 @@ public class CustomPageableTableView: UITableView {
 
 	// MARK: - UIView
 	public override var bounds: CGRect {
-		didSet { pager.updateForBoundsChange() }
+		didSet {
+			guard bounds.origin != oldValue.origin else { return }
+			pager.updateForBoundsChange()
+		}
 	}
 	
 	public override var frame: CGRect {
