@@ -68,6 +68,11 @@ internal class PagerScrollView: UIScrollView {
 		bouncesZoom = parent.bouncesZoom
 		isDirectionalLockEnabled = parent.isDirectionalLockEnabled
 
+		updateGestureRecognizers()
+	}
+	
+	public func updateGestureRecognizers() {
+		guard let parent = parent else { return }
 		panGestureRecognizer.isEnabled = parent.isPagingEnabled
 		parent.panGestureRecognizer.isEnabled = (parent.isPagingEnabled == false)
 	}

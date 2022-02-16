@@ -21,16 +21,16 @@ class ViewController: UIViewController {
 		view.backgroundColor = .systemBackground
 
 		let layout = Z()
-		layout.scrollDirection = .vertical
+		layout.scrollDirection = .horizontal
 		layout.minimumInteritemSpacing = 0
 		layout.minimumLineSpacing = 0
 		layout.sectionInset = .zero
-		layout.itemSize = CGSize(width: 320, height: 200)
+		layout.itemSize = CGSize(width: 178 + 16, height: 700)
 
 
 		// this is where the magic happens
-		collectionView.pagingConfiguration.size = .absolute(height: 200)
-		collectionView.pagingConfiguration.alignment = .centerY
+		collectionView.pagingConfiguration.size = .absolute(width: 178 + 16)
+		collectionView.pagingConfiguration.alignment = .centerX
 
 		collectionView.dataSource = self
 		collectionView.delegate = self

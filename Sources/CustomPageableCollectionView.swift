@@ -146,5 +146,11 @@ public class CustomPageableCollectionView: UICollectionView {
 	public override func layoutSubviews() {
 		pager.ignoreParentChanges { super.layoutSubviews() }
 		pager.updateSize()
+		pager.updateGestureRecognizers()
+	}
+	
+	public override func didMoveToWindow() {
+		super.didMoveToWindow()
+		pager.updateGestureRecognizers()
 	}
 }
