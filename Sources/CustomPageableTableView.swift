@@ -67,32 +67,50 @@ public class CustomPageableTableView: UITableView {
 	}
 
 	public override var contentSize: CGSize {
-		didSet { pager.updateSize() }
+		didSet {
+			guard contentSize != oldValue else { return }
+			pager.updateSize()
+		}
 	}
-
+	
 	public override var alwaysBounceVertical: Bool {
-		didSet { pager.updateProperties() }
+		didSet {
+			guard alwaysBounceVertical != oldValue else { return }
+			pager.updateProperties()
+		}
 	}
-
+	
 	public override var alwaysBounceHorizontal: Bool {
-		didSet { pager.updateProperties() }
+		didSet {
+			guard alwaysBounceHorizontal != oldValue else { return }
+			pager.updateProperties()
+		}
 	}
-
+	
 	public override func adjustedContentInsetDidChange() {
 		super.adjustedContentInsetDidChange()
 		pager.updateProperties()
 	}
-
+	
 	public override var keyboardDismissMode: UIScrollView.KeyboardDismissMode {
-		didSet { pager.updateProperties() }
+		didSet {
+			guard keyboardDismissMode != oldValue else { return }
+			pager.updateProperties()
+		}
 	}
-
+	
 	public override var decelerationRate: UIScrollView.DecelerationRate {
-		didSet { pager.updateProperties() }
+		didSet {
+			guard decelerationRate != oldValue else { return }
+			pager.updateProperties()
+		}
 	}
-
+	
 	public override var isDirectionalLockEnabled: Bool {
-		didSet { pager.updateProperties() }
+		didSet {
+			guard isDirectionalLockEnabled != oldValue else { return }
+			pager.updateProperties()
+		}
 	}
 
 	public override func scrollRectToVisible(_ rect: CGRect, animated: Bool) {

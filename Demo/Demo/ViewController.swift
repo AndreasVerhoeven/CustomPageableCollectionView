@@ -7,14 +7,20 @@
 
 import UIKit
 
+class Z: UICollectionViewFlowLayout {
+	override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+		return true
+	}
+}
+
 class ViewController: UIViewController {
-	let collectionView = CustomPageableCollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+	let collectionView = CustomPageableCollectionView(frame: .zero, collectionViewLayout: Z())
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view.backgroundColor = .systemBackground
 
-		let layout = UICollectionViewFlowLayout()
+		let layout = Z()
 		layout.scrollDirection = .vertical
 		layout.minimumInteritemSpacing = 0
 		layout.minimumLineSpacing = 0
