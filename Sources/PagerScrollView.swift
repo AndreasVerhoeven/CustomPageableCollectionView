@@ -10,8 +10,15 @@ import UIKit
 internal class PagerScrollView: UIScrollView {
 	weak var parent: UIScrollView?
 
-	private var ignoreBoundsChange = false
 	private var ignorePagerBoundsChange = false
+	private var ignoreBoundsChange: Bool { ignoreParentChangesCount > 0 }
+	private var ignoreParentChangesCount = 0
+	
+	public func ignoreParentChanges(_ callback: () -> Void) {
+		ignoreParentChangesCount += 1
+		callback()
+		ignoreParentChangesCount -= 1
+	}
 
 	init(parent: UIScrollView) {
 		self.parent = parent
@@ -95,15 +102,14 @@ internal class PagerScrollView: UIScrollView {
 
 	private func updateParentContentOffset() {
 		guard let parent = parent, parent.isPagingEnabled else { return }
-		ignoreBoundsChange = true
-		parent.contentOffset = configuration.resolvedContentOffset(for: parent, pager: self)
-		ignoreBoundsChange = false
+		ignoreParentChanges {
+			parent.contentOffset = configuration.resolvedContentOffset(for: parent, pager: self)
+		}
 	}
 
 	// MARK: - UIView
 	override var bounds: CGRect {
 		didSet {
-			guard ignorePagerBoundsChange == false else { return }
 			updateParentContentOffset()
 		}
 	}

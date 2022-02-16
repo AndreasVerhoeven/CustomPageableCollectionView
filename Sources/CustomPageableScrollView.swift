@@ -112,8 +112,14 @@ public class CustomPageableScrollView: UIScrollView {
 	public override var bounds: CGRect {
 		didSet { pager.updateForBoundsChange() }
 	}
+	
+	public override var frame: CGRect {
+		get { super.frame }
+		set { pager.ignoreParentChanges { super.frame = newValue } }
+	}
+	
 	public override func layoutSubviews() {
-		super.layoutSubviews()
+		pager.ignoreParentChanges { super.layoutSubviews() }
 		pager.updateSize()
 	}
 }

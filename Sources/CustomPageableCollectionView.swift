@@ -111,7 +111,7 @@ public class CustomPageableCollectionView: UICollectionView {
 	public override var contentOffset: CGPoint {
 		didSet {
 			guard contentOffset != oldValue else { return }
-			pager.contentOffset = pagingConfiguration.pagerContentOffset(for: contentOffset, in: self, pager: pager)
+			pager.updateForBoundsChange()
 		}
 	}
 
@@ -119,8 +119,14 @@ public class CustomPageableCollectionView: UICollectionView {
 	public override var bounds: CGRect {
 		didSet { pager.updateForBoundsChange() }
 	}
+	
+	public override var frame: CGRect {
+		get { super.frame }
+		set { pager.ignoreParentChanges { super.frame = newValue } }
+	}
+	
 	public override func layoutSubviews() {
-		super.layoutSubviews()
+		pager.ignoreParentChanges { super.layoutSubviews() }
 		pager.updateSize()
 	}
 }

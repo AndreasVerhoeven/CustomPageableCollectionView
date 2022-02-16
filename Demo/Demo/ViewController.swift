@@ -35,18 +35,38 @@ class ViewController: UIViewController {
 		collectionView.frame = CGRect(origin: .zero, size: view.bounds.size)
 		collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 		view.addSubview(collectionView)
+		
+		let centerLine = UIView()
+		centerLine.backgroundColor = .red
+		centerLine.translatesAutoresizingMaskIntoConstraints = false
+		view.addSubview(centerLine)
+		centerLine.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+		centerLine.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+		centerLine.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+		centerLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
 
 	}
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 10
+		return 5
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
 		cell.contentView.backgroundColor = UIColor(red: CGFloat.random(in: 0..<1), green: CGFloat.random(in: 0..<1), blue: CGFloat.random(in: 0..<1), alpha: 1)
+		
+		if cell.contentView.subviews.count == 0 {
+			let centerLine = UIView()
+			centerLine.backgroundColor = .blue
+			centerLine.translatesAutoresizingMaskIntoConstraints = false
+			cell.contentView.addSubview(centerLine)
+			centerLine.widthAnchor.constraint(equalTo: cell.contentView.widthAnchor).isActive = true
+			centerLine.centerXAnchor.constraint(equalTo: cell.contentView.centerXAnchor).isActive = true
+			centerLine.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor).isActive = true
+			centerLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+		}
 		return cell
 	}
 	
