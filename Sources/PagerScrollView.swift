@@ -35,7 +35,7 @@ internal class PagerScrollView: UIScrollView {
 	var configuration = PagingConfiguration(size: .full) {
 		didSet {
 			guard configuration != oldValue else { return }
-			updateProperties()
+			updateScrollViewProperties()
 			updateParentContentOffset()
 		}
 	}
@@ -55,7 +55,7 @@ internal class PagerScrollView: UIScrollView {
 		ignorePagerBoundsChange = false
 	}
 
-	public func updateProperties() {
+	public func update() {
 		guard let parent = parent else { return }
 		isScrollEnabled = parent.isScrollEnabled
 		alwaysBounceVertical = parent.alwaysBounceVertical
@@ -102,7 +102,7 @@ internal class PagerScrollView: UIScrollView {
 		// this forwarding.
 		parent.addSubview(forwardingStopperScrollView)
 		parent.addGestureRecognizer(panGestureRecognizer)
-		updateProperties()
+		updateScrollViewProperties()
 	}
 
 	private func updateParentContentOffset() {

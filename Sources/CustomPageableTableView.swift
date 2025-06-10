@@ -26,7 +26,7 @@ public class CustomPageableTableView: UITableView {
 
 	// MARK: - Private
 	private func setup() {
-		pager.updateProperties()
+		pager.updateScrollViewProperties()
 	}
 
 	// MARK: - UICollectionView
@@ -46,7 +46,7 @@ public class CustomPageableTableView: UITableView {
 		get { _isPagingEnabled }
 		set {
 			_isPagingEnabled = newValue
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
@@ -63,7 +63,7 @@ public class CustomPageableTableView: UITableView {
 	}
 
 	public override var delegate: UITableViewDelegate? {
-		didSet { pager.updateProperties() }
+		didSet { pager.updateScrollViewProperties() }
 	}
 
 	public override var contentSize: CGSize {
@@ -76,40 +76,40 @@ public class CustomPageableTableView: UITableView {
 	public override var alwaysBounceVertical: Bool {
 		didSet {
 			guard alwaysBounceVertical != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override var alwaysBounceHorizontal: Bool {
 		didSet {
 			guard alwaysBounceHorizontal != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override func adjustedContentInsetDidChange() {
 		super.adjustedContentInsetDidChange()
-		pager.updateProperties()
+		pager.updateScrollViewProperties()
 	}
 	
 	public override var keyboardDismissMode: UIScrollView.KeyboardDismissMode {
 		didSet {
 			guard keyboardDismissMode != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override var decelerationRate: UIScrollView.DecelerationRate {
 		didSet {
 			guard decelerationRate != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override var isDirectionalLockEnabled: Bool {
 		didSet {
 			guard isDirectionalLockEnabled != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 

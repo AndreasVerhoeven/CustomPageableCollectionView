@@ -31,7 +31,7 @@ public class CustomPageableCollectionView: UICollectionView {
 
 	// MARK: - Private
 	private func setup() {
-		pager.updateProperties()
+		pager.updateScrollViewProperties()
 	}
 
 	// MARK: - UICollectionView
@@ -51,7 +51,7 @@ public class CustomPageableCollectionView: UICollectionView {
 		get { _isPagingEnabled }
 		set {
 			_isPagingEnabled = newValue
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
@@ -68,7 +68,7 @@ public class CustomPageableCollectionView: UICollectionView {
 	}
 	
 	public override var delegate: UICollectionViewDelegate? {
-		didSet { pager.updateProperties() }
+		didSet { pager.updateScrollViewProperties() }
 	}
 
 	public override var contentSize: CGSize {
@@ -81,40 +81,40 @@ public class CustomPageableCollectionView: UICollectionView {
 	public override var alwaysBounceVertical: Bool {
 		didSet {
 			guard alwaysBounceVertical != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override var alwaysBounceHorizontal: Bool {
 		didSet {
 			guard alwaysBounceHorizontal != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override func adjustedContentInsetDidChange() {
 		super.adjustedContentInsetDidChange()
-		pager.updateProperties()
+		pager.updateScrollViewProperties()
 	}
 	
 	public override var keyboardDismissMode: UIScrollView.KeyboardDismissMode {
 		didSet {
 			guard keyboardDismissMode != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override var decelerationRate: UIScrollView.DecelerationRate {
 		didSet {
 			guard decelerationRate != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 	
 	public override var isDirectionalLockEnabled: Bool {
 		didSet {
 			guard isDirectionalLockEnabled != oldValue else { return }
-			pager.updateProperties()
+			pager.updateScrollViewProperties()
 		}
 	}
 
