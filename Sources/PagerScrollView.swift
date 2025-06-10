@@ -55,7 +55,7 @@ internal class PagerScrollView: UIScrollView {
 		ignorePagerBoundsChange = false
 	}
 
-	public func update() {
+	public func updateScrollViewProperties() {
 		guard let parent = parent else { return }
 		isScrollEnabled = parent.isScrollEnabled
 		alwaysBounceVertical = parent.alwaysBounceVertical
